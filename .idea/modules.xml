@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Package Tracking.iml" filepath="$PROJECT_DIR$/.idea/modules/Package Tracking.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Package_Tracking.iml" filepath="$PROJECT_DIR$/.idea/modules/Package_Tracking.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Package_Tracking.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Package_Tracking.app.iml" />
     </modules>
   </component>
 </project>
