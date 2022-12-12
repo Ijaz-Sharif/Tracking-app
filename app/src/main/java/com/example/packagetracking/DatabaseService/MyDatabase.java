@@ -4,6 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
+
+import com.example.packagetracking.Model.Order;
+import com.example.packagetracking.Model.Shipping;
 
 public class MyDatabase extends SQLiteOpenHelper {
     public static final String DBName = "ParcelTracking_Database";
@@ -60,6 +64,43 @@ public class MyDatabase extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TName);
         db.execSQL("DROP TABLE IF EXISTS " + TName1);
         onCreate(db);
+    }
+
+
+
+    public void addOrderData(Order order) {
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues cv=new ContentValues();
+        cv.put(Col1,order.getOrderNumber());
+        cv.put(Col2,order.getOrderDate());
+        cv.put(Col3,order.getItemNumber());
+        cv.put(Col4,order.getItemDescription());
+        cv.put(Col5,order.getCountryOrigin());
+        cv.put(Col6,order.getReleaseDate());
+        cv.put(Col7,order.getEstimitedArrivalTime());
+        cv.put(Col9,order.getOrderStatus());
+        cv.put(Col10,order.getDeliveryNumber());
+        long result=  db.insert(TName,null,cv);
+//        if(result!=-1){
+//            Toast.makeText(context, "record add successfully", Toast.LENGTH_LONG).show();
+//        }
+//        else {
+//            Toast.makeText(context, "record not add successfully", Toast.LENGTH_LONG).show();
+//
+//        }
+        db.close();
+    }
+
+    public void addShippingData(Shipping shipping) {
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues cv=new ContentValues();
+        cv.put(Col_1,shipping.getOrderNumber());
+        cv.put(Col_2,shipping.getShipmentNumber());
+        cv.put(Col_3,shipping.getShipmentDate());
+        cv.put(Col_4,shipping.getShipmentTime());
+        cv.put(Col_5,shipping.getShipmentStatus());
+        long result=  db.insert(TName1,null,cv);
+        db.close();
     }
 
 
