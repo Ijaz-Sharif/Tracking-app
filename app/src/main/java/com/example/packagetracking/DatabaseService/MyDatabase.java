@@ -2,12 +2,15 @@ package com.example.packagetracking.DatabaseService;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import com.example.packagetracking.Model.Order;
 import com.example.packagetracking.Model.Shipping;
+
+import java.util.ArrayList;
 
 public class MyDatabase extends SQLiteOpenHelper {
     public static final String DBName = "ParcelTracking_Database";
@@ -102,7 +105,29 @@ public class MyDatabase extends SQLiteOpenHelper {
         long result=  db.insert(TName1,null,cv);
         db.close();
     }
-
+    public Shipping getShippingData(String Id){
+        Shipping shipping=null;
+        SQLiteDatabase db=this.getReadableDatabase();
+        Cursor cursor =  db.rawQuery("SELECT * FROM ShippingTb WHERE shipmentNumber ='" + Id + "'", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()){
+            shipping =new Shipping(String.valueOf(cursor.getInt(5)),cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(5));
+            cursor.moveToNext();
+        }
+        return shipping;
+    }
+    public Order getOrderData(String Id){
+        Order order=null;
+        SQLiteDatabase db=this.getReadableDatabase();
+        Cursor cursor =  db.rawQuery("SELECT * FROM ShippingTb WHERE shipmentNumber ='" + Id + "'", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()){
+            order =new Order(String.valueOf(cursor.getInt(10)),cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4)
+            ,cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getString(8),cursor.getString(9));
+            cursor.moveToNext();
+        }
+        return order;
+    }
 
 
 
