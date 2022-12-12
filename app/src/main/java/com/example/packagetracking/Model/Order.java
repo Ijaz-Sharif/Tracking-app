@@ -3,7 +3,7 @@ package com.example.packagetracking.Model;
 public class Order {
 
 
-    String  orderNumber,OrderDate,itemNumber,itemDescription,countryOrigin,releaseDate,estimitedArrivalTime,DateOfShipment,orderStatus,deliveryNUmber,id;
+    String  orderNumber,OrderDate,itemNumber,itemDescription,countryOrigin,releaseDate,estimitedArrivalTime,DateOfShipment,orderStatus,deliveryNumber,id;
 
 
     public Order(String orderNumber, String orderDate, String itemNumber, String itemDescription, String countryOrigin, String releaseDate, String estimitedArrivalTime, String dateOfShipment, String orderStatus, String deliveryNUmber) {
@@ -16,7 +16,7 @@ public class Order {
         this.estimitedArrivalTime = estimitedArrivalTime;
         DateOfShipment = dateOfShipment;
         this.orderStatus = orderStatus;
-        this.deliveryNUmber = deliveryNUmber;
+        this.deliveryNumber = deliveryNUmber;
     }
 
     public Order( String id,String orderNumber, String orderDate, String itemNumber, String itemDescription, String countryOrigin, String releaseDate, String estimitedArrivalTime, String dateOfShipment, String orderStatus, String deliveryNUmber) {
@@ -29,7 +29,7 @@ public class Order {
         this.estimitedArrivalTime = estimitedArrivalTime;
         DateOfShipment = dateOfShipment;
         this.orderStatus = orderStatus;
-        this.deliveryNUmber = deliveryNUmber;
+        this.deliveryNumber = deliveryNUmber;
         this.id = id;
     }
 
@@ -72,8 +72,8 @@ public class Order {
         return orderStatus;
     }
 
-    public String getDeliveryNUmber() {
-        return deliveryNUmber;
+    public String getDeliveryNumber() {
+        return deliveryNumber;
     }
 
     public String getId() {
