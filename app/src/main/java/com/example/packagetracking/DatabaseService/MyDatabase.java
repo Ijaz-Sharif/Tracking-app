@@ -1,5 +1,6 @@
 package com.example.packagetracking.DatabaseService;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -59,5 +60,32 @@ public class MyDatabase extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TName);
         db.execSQL("DROP TABLE IF EXISTS " + TName1);
         onCreate(db);
+    }
+
+
+
+
+
+    public void updateOrderStatus(String itemId){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues cv=new ContentValues();
+        cv.put(Col9,"close");
+        db.update(TName,cv,"Id=?",new String[]{itemId});
+    }
+    public void updateShippingStatus(String itemId){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues cv=new ContentValues();
+        cv.put(Col_5,"Close");
+        db.update(TName1,cv,"Id=?",new String[]{itemId});
+    }
+    public int DeleteOrder(String id){
+        SQLiteDatabase db=this.getReadableDatabase();
+        int b=  db.delete(TName,"Id=?",new String[]{id});
+        return b;
+    }
+    public int DeleteShipping(String id){
+        SQLiteDatabase db=this.getReadableDatabase();
+        int b=  db.delete(TName1,"Id=?",new String[]{id});
+        return b;
     }
 }
