@@ -50,8 +50,10 @@ public class MyDatabase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL(" create table " + TName + "(" + Col_1 + " TEXT," + Col_2 + " TEXT," + Col_3 + " TEXT,"
-                + Col_4 + " INTEGER PRIMARY KEY AUTOINCREMENT)");
+        db.execSQL(" create table " + TName + "(" + Col1 + " TEXT," + Col2 + " TEXT," + Col3 + " TEXT,"
+                + Col4 + " TEXT," + Col5 + " TEXT," + Col6 + " TEXT," + Col7 + " TEXT," + Col8 + " TEXT,"
+                + Col9 + " TEXT," + Col10 + " TEXT,"
+                + Col11 + " INTEGER PRIMARY KEY AUTOINCREMENT)");
 
 
 
@@ -81,16 +83,17 @@ public class MyDatabase extends SQLiteOpenHelper {
         cv.put(Col5,order.getCountryOrigin());
         cv.put(Col6,order.getReleaseDate());
         cv.put(Col7,order.getEstimitedArrivalTime());
+        cv.put(Col8,order.getDateOfShipment());
         cv.put(Col9,order.getOrderStatus());
         cv.put(Col10,order.getDeliveryNumber());
         long result=  db.insert(TName,null,cv);
-//        if(result!=-1){
-//            Toast.makeText(context, "record add successfully", Toast.LENGTH_LONG).show();
-//        }
-//        else {
-//            Toast.makeText(context, "record not add successfully", Toast.LENGTH_LONG).show();
-//
-//        }
+        if(result!=-1){
+            Toast.makeText(context, "record add successfully", Toast.LENGTH_LONG).show();
+        }
+        else {
+            Toast.makeText(context, "record not add successfully", Toast.LENGTH_LONG).show();
+
+        }
         db.close();
     }
 
@@ -119,7 +122,7 @@ public class MyDatabase extends SQLiteOpenHelper {
     public Order getOrderData(String Id){
         Order order=null;
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor =  db.rawQuery("SELECT * FROM ShippingTb WHERE shipmentNumber ='" + Id + "'", null);
+        Cursor cursor =  db.rawQuery("SELECT * FROM OrderTb WHERE orderNumber ='" + Id + "'", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
             order =new Order(String.valueOf(cursor.getInt(10)),cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4)

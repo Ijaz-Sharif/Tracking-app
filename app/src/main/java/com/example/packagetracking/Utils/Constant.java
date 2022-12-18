@@ -9,6 +9,19 @@ import android.preference.PreferenceManager;
 import java.io.ByteArrayOutputStream;
 
 public class Constant {
+
+
+    public static boolean getAppStatus(Context context){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getBoolean("launch", false);
+    }
+
+    public static void setAppStatus(Context context , boolean s){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        prefs.edit().putBoolean("launch", s).commit();
+    }
+
+
     public static boolean getUserLoginStatus(Context context){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         return prefs.getBoolean("User", false);
