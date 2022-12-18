@@ -151,7 +151,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"/>
 
-
+            <Button
+                android:layout_margin="10dp"
+                android:layout_width="300dp"
+                android:paddingRight="10dp"
+                android:layout_height="55dp"
+                android:text="View Detail"
+                android:id="@+id/btndetail"
+                android:onClick="detail"
+                android:background="@drawable/border_radious"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/yellow"
+                tools:ignore="HardcodedText" />
 
 
 

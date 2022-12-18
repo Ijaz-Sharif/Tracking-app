@@ -35,7 +35,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    sleep(3000);
+                    sleep(4000);
                     if(getUserLoginStatus(SplashActivity.this)){
                         startActivity(new Intent(SplashActivity.this, MainActivity.class));
                         finish();
@@ -53,20 +53,14 @@ public class SplashActivity extends AppCompatActivity {
         thread.start();
     }
     // add record in order table database
-    public void addRecord(){
-
-        myDatabase.addOrderData(new Order("001","10/10/2222","4","testing","India","15/10/2222","11:00","11/10/2222","false","00961234567"));
-        myDatabase.addOrderData(new Order("002","10/11/2222","6","testing","USA","12/11/2222","15:00","11/10/2222","false","00967654321"));
-
-        myDatabase.addOrderData(new Order("003","10/12/2222","10","testing","Canada","12/12/2222","18:00","11/12/2222","false","00961134567"));
-
-        myDatabase.addOrderData(new Order("004","8/8/2222","14","testing","Russia","10/8/2222","1:00","11/8/2222","false","00961234997"));
-        myDatabase.addOrderData(new Order("005","7/7/2222","2","testing","France","10/7/2222","7:00","14/7/2222","false","00961236666"));
-          setAppStatus(this,true);
-           start();
-
-
-
+    public void addRecord() {
+        myDatabase.addOrderData(new Order("001", "10/10/2222", "4", "testing", "India", "15/10/2222", "11:00", "11/10/2222", "open", "00961234567"));
+        myDatabase.addOrderData(new Order("002", "10/11/2222", "6", "testing", "USA", "12/11/2222", "15:00", "11/10/2222", "open", "00967654321"));
+        myDatabase.addOrderData(new Order("003", "10/12/2222", "10", "testing", "Canada", "12/12/2222", "18:00", "11/12/2222", "open", "00961134567"));
+        myDatabase.addOrderData(new Order("004", "8/8/2222", "14", "testing", "Russia", "10/8/2222", "1:00", "11/8/2222", "open", "00961234997"));
+        myDatabase.addOrderData(new Order("005", "7/7/2222", "2", "testing", "France", "10/7/2222", "7:00", "14/7/2222", "open", "00961236666"));
+        setAppStatus(this, true);
+        start();
 
     }
 }

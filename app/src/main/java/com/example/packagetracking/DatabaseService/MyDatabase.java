@@ -87,13 +87,12 @@ public class MyDatabase extends SQLiteOpenHelper {
         cv.put(Col9,order.getOrderStatus());
         cv.put(Col10,order.getDeliveryNumber());
         long result=  db.insert(TName,null,cv);
-        if(result!=-1){
-            Toast.makeText(context, "record add successfully", Toast.LENGTH_LONG).show();
-        }
-        else {
-            Toast.makeText(context, "record not add successfully", Toast.LENGTH_LONG).show();
-
-        }
+//        if(result!=-1){
+//            Toast.makeText(context, "record add successfully", Toast.LENGTH_LONG).show();
+//        }
+//        else {
+//            Toast.makeText(context, "record not add successfully", Toast.LENGTH_LONG).show();
+//        }
         db.close();
     }
 
@@ -106,6 +105,12 @@ public class MyDatabase extends SQLiteOpenHelper {
         cv.put(Col_4,shipping.getShipmentTime());
         cv.put(Col_5,shipping.getShipmentStatus());
         long result=  db.insert(TName1,null,cv);
+        if(result!=-1){
+            Toast.makeText(context, "shipment add successfully", Toast.LENGTH_LONG).show();
+        }
+        else {
+            Toast.makeText(context, "shipment not add successfully", Toast.LENGTH_LONG).show();
+        }
         db.close();
     }
     public Shipping getShippingData(String Id){
@@ -134,7 +139,6 @@ public class MyDatabase extends SQLiteOpenHelper {
 
 
 
-
     public void updateOrderStatus(String itemId){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues cv=new ContentValues();
@@ -152,11 +156,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         int b=  db.delete(TName,"Id=?",new String[]{id});
         return b;
     }
-    public int DeleteShipping(String id){
-        SQLiteDatabase db=this.getReadableDatabase();
-        int b=  db.delete(TName1,"Id=?",new String[]{id});
-        return b;
-    }
+
     public int DeleteShippingOrder(String id){
         SQLiteDatabase db=this.getReadableDatabase();
         int b=  db.delete(TName1,"orderNumber=?",new String[]{id});

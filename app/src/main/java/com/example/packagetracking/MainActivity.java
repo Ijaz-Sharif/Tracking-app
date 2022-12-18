@@ -3,6 +3,7 @@ package com.example.packagetracking;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,15 +15,18 @@ import android.widget.Toast;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.packagetracking.DatabaseService.MyDatabase;
 import com.example.packagetracking.Model.Order;
+import com.example.packagetracking.Screens.DetailActivity;
 
 public class MainActivity extends AppCompatActivity {
-          EditText et_search;
-          MyDatabase myDatabase;
+    EditText et_search;
+    MyDatabase myDatabase;
+
+
     LottieAnimationView lottieAnimationView;
     ImageView search_img,cancel_img;
-    Button btn_orderDate,btn_item_number,btn_description,btn_country_origin;
+    Button btn_orderDate,btn_item_number,btn_description,btn_country_origin,btndetail;
     TextView orderDate,itemNumber,description,countryOrigin;
-    Order order;
+    public static Order order;
     boolean isOrderDate=false,isItem=false,isDescription=false,isCountry=false;
 
     @Override
@@ -42,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
         itemNumber=findViewById(R.id.itemNumber);
         description=findViewById(R.id.description);
         countryOrigin=findViewById(R.id.countryOrigin);
-        hideRecord();
+        btndetail=findViewById(R.id.btndetail);
+
         btn_orderDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -132,6 +137,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onStart() {
+        hideRecord();
+        super.onStart();
+    }
+
     public void cancel(View view) {
                  hideRecord();
     }
@@ -140,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
         isItem=false;
         isDescription=false;
         isCountry=false;
+        btndetail.setVisibility(View.VISIBLE);
         cancel_img.setVisibility(View.VISIBLE);
         search_img.setVisibility(View.GONE);
         lottieAnimationView.setVisibility(View.GONE);
@@ -157,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
         isItem=false;
         isDescription=false;
         isCountry=false;
+        btndetail.setVisibility(View.GONE);
         cancel_img.setVisibility(View.GONE);
         et_search.setText("");
         search_img.setVisibility(View.VISIBLE);
@@ -170,5 +183,9 @@ public class MainActivity extends AppCompatActivity {
          itemNumber.setVisibility(View.GONE);
          orderDate.setVisibility(View.GONE);
 
+    }
+
+    public void detail(View view) {
+        startActivity(new Intent(this, DetailActivity.class));
     }
 }
