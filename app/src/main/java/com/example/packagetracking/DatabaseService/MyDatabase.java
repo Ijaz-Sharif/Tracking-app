@@ -111,7 +111,7 @@ public class MyDatabase extends SQLiteOpenHelper {
     public Shipping getShippingData(String Id){
         Shipping shipping=null;
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor =  db.rawQuery("SELECT * FROM ShippingTb WHERE shipmentNumber ='" + Id + "'", null);
+        Cursor cursor =  db.rawQuery("SELECT * FROM ShippingTb WHERE orderNumber ='" + Id + "'", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
             shipping =new Shipping(String.valueOf(cursor.getInt(5)),cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(5));
@@ -155,6 +155,11 @@ public class MyDatabase extends SQLiteOpenHelper {
     public int DeleteShipping(String id){
         SQLiteDatabase db=this.getReadableDatabase();
         int b=  db.delete(TName1,"Id=?",new String[]{id});
+        return b;
+    }
+    public int DeleteShippingOrder(String id){
+        SQLiteDatabase db=this.getReadableDatabase();
+        int b=  db.delete(TName1,"orderNumber=?",new String[]{id});
         return b;
     }
 }

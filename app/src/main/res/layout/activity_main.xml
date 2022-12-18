@@ -39,8 +39,19 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:onClick="search"
+                    android:id="@+id/search_img"
                     android:layout_centerVertical="true"
                     android:src="@drawable/search"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/et_search"
+                    android:layout_height="30dp"/>
+                <ImageView
+                    android:layout_width="30dp"
+                    android:onClick="cancel"
+                    android:visibility="gone"
+                    android:id="@+id/cancel_img"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/close"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/et_search"
                     android:layout_height="30dp"/>
@@ -55,6 +66,112 @@
                 android:layout_marginTop="50dp"
                 android:layout_gravity="center"
                 app:lottie_rawRes="@raw/splash2" />
+
+
+
+            <Button
+                android:layout_margin="10dp"
+                android:id="@+id/btn_orderDate"
+                android:layout_width="300dp"
+                android:layout_height="55dp"
+                android:text="Order Date"
+                android:paddingRight="10dp"
+                android:drawableRight="@drawable/arrow_down"
+                android:background="@drawable/border_radious"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/yellow"
+                tools:ignore="HardcodedText" />
+            <TextView
+                android:id="@+id/orderDate"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+
+            <Button
+
+                android:layout_margin="10dp"
+                android:id="@+id/btn_item_number"
+                android:layout_width="300dp"
+                android:layout_height="55dp"
+                android:text="Item Number"
+                android:paddingRight="10dp"
+                android:drawableRight="@drawable/arrow_down"
+                android:background="@drawable/border_radious"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/yellow"
+                tools:ignore="HardcodedText" />
+            <TextView
+                android:id="@+id/itemNumber"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+            <Button
+
+                android:layout_margin="10dp"
+                android:id="@+id/btn_description"
+                android:layout_width="300dp"
+                android:layout_height="55dp"
+                android:paddingRight="10dp"
+                android:text="Order Description"
+                android:drawableRight="@drawable/arrow_down"
+                android:background="@drawable/border_radious"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/yellow"
+                tools:ignore="HardcodedText" />
+            <TextView
+                android:id="@+id/description"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+            <Button
+                android:layout_margin="10dp"
+                android:id="@+id/btn_country_origin"
+                android:layout_width="300dp"
+                android:drawableRight="@drawable/arrow_down"
+                android:paddingRight="10dp"
+                android:layout_height="55dp"
+
+                android:text="Country Origin"
+                android:background="@drawable/border_radious"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/yellow"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/countryOrigin"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </LinearLayout>
     </ScrollView>
 
