@@ -1,10 +1,14 @@
 package com.example.packagetracking;
 
+import static com.example.packagetracking.Utils.Constant.setUserLoginStatus;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +19,7 @@ import android.widget.Toast;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.packagetracking.DatabaseService.MyDatabase;
 import com.example.packagetracking.Model.Order;
+import com.example.packagetracking.Screens.AccountActivity;
 import com.example.packagetracking.Screens.DetailActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -141,6 +146,28 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         hideRecord();
         super.onStart();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id){
+            case R.id.logoutUser:
+                setUserLoginStatus(MainActivity.this,false);
+                startActivity(new Intent(MainActivity.this, AccountActivity.class)
+                        .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public void cancel(View view) {
