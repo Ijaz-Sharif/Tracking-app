@@ -29,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
     LottieAnimationView lottieAnimationView;
     ImageView search_img,cancel_img;
-    Button btn_orderDate,btn_item_number,btn_description,btn_country_origin,btndetail;
-    TextView orderDate,itemNumber,description,countryOrigin;
+    Button btn_orderDate,btn_item_number,btn_description,btn_country_origin,btn_status;
+    TextView orderDate,itemNumber,description,countryOrigin,ordeerStatus;
     public static Order order;
-    boolean isOrderDate=false,isItem=false,isDescription=false,isCountry=false;
+    boolean isOrderDate=false,isItem=false,isDescription=false,isCountry=false,isStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +51,27 @@ public class MainActivity extends AppCompatActivity {
         itemNumber=findViewById(R.id.itemNumber);
         description=findViewById(R.id.description);
         countryOrigin=findViewById(R.id.countryOrigin);
-        btndetail=findViewById(R.id.btndetail);
+        ordeerStatus=findViewById(R.id.ordeerStatus);
+        btn_status=findViewById(R.id.btn_status);
 
+        btn_status.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(isOrderDate){
+                    isStatus=false;
+                    btn_status.setCompoundDrawablesWithIntrinsicBounds(null, null, ContextCompat.getDrawable(MainActivity.this,R.drawable.arrow_down), null);
+                    ordeerStatus.setVisibility(View.GONE);
+                }
+                else {
+                    isStatus=true;
+                    btn_status.setCompoundDrawablesWithIntrinsicBounds(null, null, ContextCompat.getDrawable(MainActivity.this,R.drawable.arrow_up), null);
+
+                    ordeerStatus.setVisibility(View.VISIBLE);
+                }
+
+
+            }
+        });
         btn_orderDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -178,7 +197,9 @@ public class MainActivity extends AppCompatActivity {
         isItem=false;
         isDescription=false;
         isCountry=false;
-        btndetail.setVisibility(View.VISIBLE);
+        isStatus=false;
+        btn_status.setVisibility(View.VISIBLE);
+        ordeerStatus.setText(order.getOrderStatus());
         cancel_img.setVisibility(View.VISIBLE);
         search_img.setVisibility(View.GONE);
         lottieAnimationView.setVisibility(View.GONE);
@@ -196,7 +217,9 @@ public class MainActivity extends AppCompatActivity {
         isItem=false;
         isDescription=false;
         isCountry=false;
-        btndetail.setVisibility(View.GONE);
+        ordeerStatus.setVisibility(View.GONE);
+        isStatus=false;
+        btn_status.setVisibility(View.GONE);
         cancel_img.setVisibility(View.GONE);
         et_search.setText("");
         search_img.setVisibility(View.VISIBLE);
@@ -212,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void detail(View view) {
-        startActivity(new Intent(this, DetailActivity.class));
-    }
+//    public void detail(View view) {
+//        startActivity(new Intent(this, DetailActivity.class));
+//    }
 }
