@@ -86,6 +86,7 @@ public class LoginFragment extends Fragment {
         return false;
     }
     private void requestLogin(String email, String password) {
+        loadingDialog.show();
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
