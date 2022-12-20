@@ -139,11 +139,11 @@ public class MyDatabase extends SQLiteOpenHelper {
 
 
 
-    public void updateOrderStatus(String itemId){
+    public void updateOrderStatus(String orderNumber ,String status){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues cv=new ContentValues();
-        cv.put(Col9,"close");
-        db.update(TName,cv,"Id=?",new String[]{itemId});
+        cv.put(Col9,status);
+        db.update(TName,cv,"Id=?",new String[]{orderNumber});
     }
     public void updateShippingStatus(String itemId){
         SQLiteDatabase db=this.getWritableDatabase();

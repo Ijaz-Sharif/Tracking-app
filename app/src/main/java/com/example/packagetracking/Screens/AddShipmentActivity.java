@@ -99,7 +99,7 @@ public class AddShipmentActivity extends AppCompatActivity {
              Shipping shipping=new Shipping(order.getOrderNumber(),order.getItemNumber(),setDate.getText().toString(),setTime.getText().toString(),"open");
              MyDatabase myDatabase=new MyDatabase(this);
              myDatabase.addShippingData(shipping);
-             myDatabase.updateOrderStatus(order.getOrderNumber());
+             myDatabase.updateOrderStatus(order.getOrderNumber(),"close");
              startActivity(new Intent(this, MainActivity.class)
                      .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
          }

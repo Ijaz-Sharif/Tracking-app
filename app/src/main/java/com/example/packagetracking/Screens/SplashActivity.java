@@ -35,8 +35,10 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    sleep(4000);
+                    sleep(5000);
                     if(getUserLoginStatus(SplashActivity.this)){
+                        // call the function for update status
+                        updateOrderStatus();
                         startActivity(new Intent(SplashActivity.this, MainActivity.class));
                         finish();
                     }
@@ -63,4 +65,18 @@ public class SplashActivity extends AppCompatActivity {
         start();
 
     }
+
+    // update order record status
+    public void updateOrderStatus(){
+            String orderId="001";
+            String status="close";
+        myDatabase.updateOrderStatus(orderId,status);
+
+
+
+
+
+    }
+
+
 }

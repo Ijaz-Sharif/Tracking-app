@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     isStatus=true;
                     btn_status.setCompoundDrawablesWithIntrinsicBounds(null, null, ContextCompat.getDrawable(MainActivity.this,R.drawable.arrow_up), null);
-
                     ordeerStatus.setVisibility(View.VISIBLE);
                 }
 
@@ -232,7 +231,6 @@ public class MainActivity extends AppCompatActivity {
          countryOrigin.setVisibility(View.GONE);
          itemNumber.setVisibility(View.GONE);
          orderDate.setVisibility(View.GONE);
-
     }
 
 //    public void detail(View view) {
